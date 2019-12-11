@@ -9,23 +9,23 @@
     "build": "tsc",
     "start": "ts-node src/index.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/webArty/ts-currency-converter.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/webArty/ts-currency-converter/issues"
-  },
-  "homepage": "https://github.com/webArty/ts-currency-converter#readme",
   "devDependencies": {
-    "@types/node": "^10.17.9",
+    "@types/node": "^10.17.6",
+    "@types/ramda": "^0.26.37",
     "husky": "^3.1.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^0.19.0",
+    "folktale": "^2.3.2",
+    "ramda": "^0.26.1",
+    "ramda-fantasy": "^0.8.0"
   }
 }
