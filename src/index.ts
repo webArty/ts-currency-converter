@@ -1,11 +1,10 @@
 import { Good } from "@app-types/good";
-import { getExchangeRate } from "./api/get-exchange-rate";
 import { TotalPriceInCurrencies } from "@app-types/total-price-in-currencies";
+
+import { getTotalInCurrencies } from "./api/get-total-in-currencies";
 
 // Пример использования функции getExchangeRate;
 (function main() {
-
-    let totalPriceInCurrencies: Partial<TotalPriceInCurrencies>;
 
     const basket: Good[] = [
         { price: 20, name: "something simpe" },
@@ -14,15 +13,22 @@ import { TotalPriceInCurrencies } from "@app-types/total-price-in-currencies";
         { price: 1305, name: "something expensive" }
     ];
 
-    getExchangeRate(basket).fork(
+    getTotalInCurrencies(basket).fork(
         // обработка ошибок
         error => {
             console.log(error);
         },
         // обработка успешного ответа, например запись результата в переменную или отрисовка чеголибо
         (result: Partial<TotalPriceInCurrencies>) => {
-            totalPriceInCurrencies = result;
-            console.log(totalPriceInCurrencies);
+            doSomething(result)
         }
     );
+
+
+
 })();
+
+
+function doSomething(totals: Partial<TotalPriceInCurrencies>){
+    console.log(totals);
+}
