@@ -3,7 +3,7 @@ import { AxiosError } from "axios";
 
 import { Valuable } from "@app-types/valuable";
 import { SuportedExchangeRates } from "@app-types/suported-exchange-rates";
-import { TotalPriceInCurrencies } from "@app-types/total-price-in-currencies";
+import { TotalCartPrice } from "@app-types/total-price-in-currencies";
 import { ISO4217 } from "@app-types/ISO4217";
 import { SupportedСurrencies } from "@app-types/supported-currencies";
 import { FutureGen } from "@app-types/future-gen";
@@ -15,8 +15,8 @@ import { getExchangeRate } from "./get-exchange-rate";
  * TotalPriceInCurrencies - объект содержащий цены во всех поддерживаемых валютах
  * @param basket массив товаров
  */
-export function getTotalInCurrencies(basket: Valuable[])
-    : FutureGen<AxiosError<any>, Partial<TotalPriceInCurrencies>> {
+export function getTotalCartPrice(basket: Valuable[])
+    : FutureGen<AxiosError<any>, Partial<TotalCartPrice>> {
 
     const sumTotalPrice: (goods: Valuable[]) => number = compose(
         sum,
@@ -52,7 +52,7 @@ export function getTotalInCurrencies(basket: Valuable[])
         const neverCheck: never = ISO4217;
     }
 
-    function transformRatesToTotalInCurrencies(rates: SuportedExchangeRates): Partial<TotalPriceInCurrencies> {
+    function transformRatesToTotalInCurrencies(rates: SuportedExchangeRates): Partial<TotalCartPrice> {
         
         return {
             [transformISO4217ToNames('RUB')]: multiplyByTotal(rates.RUB),

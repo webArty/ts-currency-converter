@@ -1,5 +1,5 @@
 import { Valuable } from "@app-types/valuable";
 
-export type Good = {
+export type Goods = {
     name: string;
 } & Valuable;
